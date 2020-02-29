@@ -4,7 +4,7 @@
 from hashlib import sha1, sha256, sha512, md5, sha3_256
 from time import time
 from math import ceil
-import numpy as np
+from numpy import linspace
 import matplotlib.pyplot as plt
 
 
@@ -38,7 +38,7 @@ def graph(func, l, color, title):  # func: название хеш-функци�
 
 
 def main():
-    l = np.linspace(0, 500000000, 50)  # аргументы
+    l = linspace(0, 500000000, 50)  # аргументы
     data = (("md5", "c", "MD5"), ("sha256", "b", "SHA-256"), ("sha512", "g", "SHA-512"),
             ("sha3_256", "y", "SHA-3/256"))  # параметры отображения
     for h in data:
