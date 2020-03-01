@@ -44,7 +44,7 @@ def main():
     for h in data:
         graph(h[0], l, h[1], h[2])
     plt.title("график зависимости времени вычисления некоторых хеш-функций от длины входного массива", size=16)
-    plt.xlabel("длина сообщения, симв.", size=13)
+    plt.xlabel("длина сообщения, байт", size=13)
     plt.ylabel("время вычисления, с", size=13)
     plt.grid()
     plt.legend()
