@@ -41,7 +41,7 @@ transf_word = lambda w, k: (sigma1(w[k - 2]) + w[k - 7] + sigma0(w[k - 15]) + w[
 word32 = lambda w: [w.append(transf_word(w, k)) for k in range(16, 64)]
 
 
-def after_mod(arr):
+def mod_arr(arr):
     for i in range(len(arr)):
         arr[i] = arr[i] & MOD
     return arr
@@ -116,8 +116,17 @@ class sha256():
             h_arr[6] += g
             h_arr[7] += h
 
-            h_arr = after_mod(h_arr)
+            h_arr = mod_arr(h_arr)
         self.hash = sum_str([struct.pack(">I", i) for i in h_arr])
 
     def hexdigest(self):
-        return encode(self.hash, 'hex_codec')
+        return decode(encode(self.hash, 'hex_codec'), 'utf-8')
+
+
+
+def main():
+    print('sha256("abc")', sha256('abc'.encode('utf-8')).hexdigest())
+
+
+if __name__ == '__main__':
+    main()
